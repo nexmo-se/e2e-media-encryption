@@ -1,0 +1,28 @@
+.setkey input,
+.setkey button {
+    all: unset;
+}
+.setkey {
+    position: sticky;
+    bottom: 24px;
+    left: 24px;
+    background-color: white;
+    display: inline-block;
+    padding: 12px;
+}
+
+.setkey input {
+    width: 220px;
+    border-style: solid;
+    border-width: thin;
+    padding: 2px 8px;
+    line-height: 22px;
+    margin-right: 8px;
+}
+
+.setkey button {
+    background-color: rgb(214, 96, 232);
+    padding: 4px 8px;
+    color: white;
+    border-radius: 4px;
+}

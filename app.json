@@ -1,0 +1,17 @@
+{
+    "name": "Vonage End to End Encryption Demo",
+    "description": "A reference application for creating End to End Media Encryption session",
+    "repository": "https://github.com/nexmo-se/e2e-media-encryption",
+    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "env": {
+      "API_KEY": {
+        "desription": "Vonage Video API - API Key",
+        "required": true
+      },
+      "API_SECRET" : {
+        "description": "Vonage Video API - API Secret",
+        "required": true
+      }
+    }
+  }
+  

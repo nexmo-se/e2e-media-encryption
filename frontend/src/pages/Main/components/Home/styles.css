@@ -1,0 +1,50 @@
+
+.home > label,
+.home > input,
+.home > button {
+    all: unset;
+    display: block;
+    width: 100%;
+}
+.home {
+    color: white;
+    padding: 64px;
+    margin: 0 auto;
+    width: 250px;
+}
+.home > input {
+    background-color: white;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    line-height: 28px;
+    padding-left: 8px;
+    color: black;
+}
+.home > label {
+    padding-left: 4px;
+}
+.e2eeState {
+    margin-bottom: 16px;
+}
+
+.role {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+.role input {
+    margin-right: 8px;
+}
+.role label {
+    font-size: 18px;
+    margin-right: 24px;
+}
+.home button {
+    background-color: rgb(214, 96, 232);
+    padding: 8px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 32px;
+    width: 78px;
+    margin: 0 auto;
+}

@@ -1,0 +1,17 @@
+.room {
+    padding: 64px 0px;
+    width: 100vw;
+    height: calc(100vh - 128px);
+}
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+}
+.roomNameBanner {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: white;
+}

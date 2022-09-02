@@ -1,0 +1,19 @@
+{
+  "name": "e2e-media-encryption-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:prod": "NODE_ENV=production node -r dotenv/config index.js",
+    "start:dev": "NODE_ENV=development nodemon dotenv/config index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "opentok": "^2.14.3"
+  }
+}
