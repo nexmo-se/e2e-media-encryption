@@ -7,7 +7,7 @@
     "start:prod": "NODE_ENV=production node -r dotenv/config index.js",
     "start:dev": "NODE_ENV=development nodemon dotenv/config index.js",
     "installs": "npm install && cd frontend && npm install",
-    "build": "cd frontend && npm run build",
+    "frontend-build": "cd frontend && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
