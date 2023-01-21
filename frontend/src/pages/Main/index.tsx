@@ -66,7 +66,7 @@ function Main(){
 
     useEffect(() => {
         if (mSession.session) {
-            if (mSession.e2eeEnable) publish();
+            publish();
             setHomeVisible(false);
             setRoomVisible(true);
             setIsLoading(false);

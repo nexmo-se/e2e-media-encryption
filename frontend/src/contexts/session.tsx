@@ -80,9 +80,11 @@ export const SessionContextProvider = ({containerId, children}: SessionContextPr
               );
               subscriber.on("encryptionSecretMatch", () => {
                 console.log(`subscriber ${subscriber.stream?.name} secret match`)
+                updateSubscriberMask(subscriber, false)
               })
               subscriber.on("encryptionSecretMismatch", () => {
                 alert(`subscriber ${subscriber.stream?.name} secret mismatch`)
+                updateSubscriberMask(subscriber, true)
               })
             } else reject();
           });
@@ -189,6 +191,50 @@ export const SessionContextProvider = ({containerId, children}: SessionContextPr
         streamDestroyedListener,
         e2eeEnable
     ])
+
+
+  function updateSubscriberMask(subscriber: Subscriber, isMismatch: Boolean) {
+    if (!subscriber.id) return
+
+    if (isMismatch) {
+      const targetDom = document.getElementById(subscriber.id);
+      if (targetDom) insertMismatchMask(subscriber, targetDom);
+    }
+    else {
+      const targetDom = document.getElementById(`${subscriber.id}-mask`);
+      if (targetDom) targetDom.remove();
+    }
+  }
+
+  function insertMismatchMask(subscriber: Subscriber, targetDom: HTMLElement) {
+    if (document.getElementById(`${subscriber.id}-mask`)) return;
+      const childNodeStr = `<div
+      id=${subscriber.id}-mask
+      style="
+      position: absolute; 
+      top: 0px; 
+      left: 0px;
+      font-size: 25px;
+      height: 100%;
+      width: 100%;
+      background-color: rgb(0,0,0,0.7);
+      color: white;
+      border: 1px solid red;
+      border-style: inset;
+      line-height: 100%;
+      vertical-align: middle;
+      ">
+        <p
+        style="
+        position: absolute; 
+        top: 45%; 
+        left: 0px;
+        text-align: center;
+        width: 100%;
+        ">Key Mismatch</p>
+      </div>`;
+      targetDom.insertAdjacentHTML('beforeend', childNodeStr);
+  }
 
     return (
         <SessionContext.Provider value={{

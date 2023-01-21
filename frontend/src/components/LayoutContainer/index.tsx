@@ -6,6 +6,7 @@ import './styles.css';
 
 import "./styles.css";
 import { SessionContext } from "contexts/session";
+import { Subscriber } from "@opentok/client";
 
 interface ILayoutContainer { 
   id: string; 
@@ -17,29 +18,17 @@ interface ILayoutContainer {
 function LayoutContainer({ id, size = "big", children }: ILayoutContainer){
   
   const mSession = useContext(SessionContext);
-  const { session , streams } = mSession;
+  const { session , subscribers, streams } = mSession;
   const containerRef = useRef<HTMLDivElement>(null);
   const layoutRef = useRef<any>();
 
   useEffect(() => {
     layoutRef.current = new LayoutManager(id);
-    const observer = new MutationObserver((mutationList => {
-      for(const mutation of mutationList){
-        if(mutation.type === "childList") layoutRef.current.layout();
-      }
-    }));
-    if(containerRef.current) observer.observe(containerRef.current, { childList: true });
-  }, [id, session, streams]);
+  }, [id, session]);
 
   useEffect(() => {
     if(layoutRef.current) layoutRef.current.layout()
-  }, [session, streams, size]);
-
-  useEffect(() => {
-    window.addEventListener("resize", lodash.debounce(() => {
-      if(layoutRef.current) layoutRef.current.layout();
-    }, 150))
-  } , [session, streams])
+  }, [session, subscribers, size, streams]);
 
   return (
     <div 

@@ -1,5 +1,7 @@
 
+import { useContext } from 'react';
 import LayoutContainer from "components/LayoutContainer";
+import { SessionContext } from 'contexts/session';
 import './styles.css'
 import SetKey from "components/SetKey"
 
@@ -14,6 +16,7 @@ interface IRoomProps {
 }
 
 function Room({visible, room}: IRoomProps) {
+    const mSession = useContext(SessionContext);
     let visibleState = 'hidden';
     if (visible) {
         visibleState = 'shown'
@@ -25,7 +28,7 @@ function Room({visible, room}: IRoomProps) {
             id="cameraContainer"
             size="big"
             />
-        <SetKey></SetKey>
+        {mSession.e2eeEnable? <SetKey></SetKey> : null}
         </div>
     )
 }

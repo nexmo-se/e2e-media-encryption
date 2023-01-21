@@ -80,6 +80,9 @@ function usePublisher({containerId, autoLayout = true, name }: IPublisher): IRet
               session.publish(
                 publisherRef.current,
                 (err) => {
+                  if (err && err.name === "OT_STREAM_CREATE_FAILED") {
+                    resolve({ retry: false, error: err });
+                  }
                   if (err && attempt < 3) {
                     publisherRef.current = undefined;
                     resolve({ retry: true, error: err });

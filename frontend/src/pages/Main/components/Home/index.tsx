@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState, useContext } from 'react';
+import { ChangeEvent, useRef, useState, useContext } from 'react';
 import './styles.css'
 import { MeContext } from 'contexts/me';
 import { SessionContext } from 'contexts/session';
